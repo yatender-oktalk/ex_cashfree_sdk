@@ -24,3 +24,6 @@ ex_cashfree_sdk-*.tar
 
 # Temporary files, for example, from tests.
 /tmp/
+
+
+.envrc

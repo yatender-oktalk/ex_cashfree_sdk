@@ -1,4 +1,4 @@
-# ExCashfreeSdk
+# ExCashfreeSDK
 
 **TODO: Add description**
 

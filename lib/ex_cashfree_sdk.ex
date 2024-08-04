@@ -1,18 +1,5 @@
-defmodule ExCashfreeSdk do
+defmodule ExCashfreeSDK do
   @moduledoc """
-  Documentation for `ExCashfreeSdk`.
+  Documentation for `ExCashfreeSDK`.
   """
-
-  @doc """
-  Hello world.
-
-  ## Examples
-
-      iex> ExCashfreeSdk.hello()
-      :world
-
-  """
-  def hello do
-    :world
-  end
 end

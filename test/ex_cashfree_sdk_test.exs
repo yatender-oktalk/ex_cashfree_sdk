@@ -1,8 +1,8 @@
-defmodule ExCashfreeSdkTest do
+defmodule ExCashfreeSDKTest do
   use ExUnit.Case
-  doctest ExCashfreeSdk
+  doctest ExCashfreeSDK
 
   test "greets the world" do
-    assert ExCashfreeSdk.hello() == :world
+    assert ExCashfreeSDK.hello() == :world
   end
 end
