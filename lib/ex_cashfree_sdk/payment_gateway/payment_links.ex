@@ -3,5 +3,5 @@ defmodule ExCashfreeSdk.PaymentGateway.PaymentLinks do
   Payment Links APIs implementation for Cashfree SDK
   """
 
-  alias ExCashfreeSDK.HTTPClient.ReqClient
+  # alias ExCashfreeSDK.HTTPClient.ReqClient
 end

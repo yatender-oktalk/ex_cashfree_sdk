@@ -4,7 +4,11 @@ defmodule ExCashfreeSDK.HTTPClient.ReqClient do
   """
 
   # Replace with your base URL
-  @base_url "https://sandbox.cashfree.com"
+  @base_url Application.compile_env(
+              :ex_cashfree_sdk,
+              :base_url,
+              "https://sandbox.cashfree.com"
+            )
 
   def get(path, headers \\ [], params \\ %{}) do
     request(:get, path, headers, params)
@@ -48,8 +52,6 @@ defmodule ExCashfreeSDK.HTTPClient.ReqClient do
       headers: merged_headers,
       json: payload
     ]
-
-    dbg(url)
 
     case apply(Req, method, [url, options]) do
       {:ok, response} -> handle_response(response)

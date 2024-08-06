@@ -1,11 +1,12 @@
 # ExCashfreeSDK
 
+ExCashfreeSDK is an Elixir library for interacting with the Cashfree payment gateway API.
+
 https://docs.cashfree.com/reference
 
 ## Installation
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `ex_cashfree_sdk` to your list of dependencies in `mix.exs`:
+Add `ex_cashfree_sdk` to your list of dependencies in `mix.exs`:
 
 ```elixir
 def deps do
@@ -15,7 +16,16 @@ def deps do
 end
 ```
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at <https://hexdocs.pm/ex_cashfree_sdk>.
+## Configuration
 
+ExCashfreeSDK uses the sandbox environment by default. To configure the base URL for API requests, you can set it in your application's configuration.
+
+For sandbox environment (default):
+No additional configuration is needed. The SDK will use https://sandbox.cashfree.com as the base URL.
+
+For production environment:
+Add the following to your config/config.exs (or the appropriate environment-specific config file):
+
+```elixir
+config :ex_cashfree_sdk, base_url: "https://api.cashfree.com"
+```
