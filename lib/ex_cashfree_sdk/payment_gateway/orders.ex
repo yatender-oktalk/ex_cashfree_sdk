@@ -1,6 +1,6 @@
 defmodule ExCashfreeSDK.PaymentGateway.Orders do
   @moduledoc """
-  Orders APIs
+  Orders APIs implementation for Cashfree SDK
   """
 
   alias ExCashfreeSDK.HTTPClient.ReqClient
