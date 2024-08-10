@@ -1,15 +1,18 @@
 defmodule ExCashfreeSDK.MixProject do
   use Mix.Project
 
+  @source_url "https://github.com/yatender-oktalk/ex_cashfree_sdk"
+
   def project do
     [
       app: :ex_cashfree_sdk,
-      version: "0.1.0",
+      version: "0.1.1",
       elixir: "~> 1.15",
       start_permanent: Mix.env() == :prod,
       deps: deps(),
       package: package(),
-      description: "Cashfree PG SDK for Elixir"
+      description: description(),
+      docs: docs()
     ]
   end
 
@@ -28,11 +31,26 @@ defmodule ExCashfreeSDK.MixProject do
     ]
   end
 
+  defp description do
+    "An Elixir SDK for Cashfree Payment Gateway"
+  end
+
+  defp docs do
+    [
+      extras: ["README.md"],
+      main: "readme",
+      source_url: @source_url,
+      source_ref: "master",
+      homepage_url: @source_url,
+      formatters: ["html"]
+    ]
+  end
+
   defp package do
     [
       licenses: ["MIT"],
-      links: %{"GitHub" => "https://github.com/yatender-oktalk/ex_cashfree_sdk"},
-      maintainers: ["Your Name"]
+      links: %{"GitHub" => @source_url},
+      maintainers: ["Yatender Singh"]
     ]
   end
 end
