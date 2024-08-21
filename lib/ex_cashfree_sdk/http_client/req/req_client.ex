@@ -3,12 +3,7 @@ defmodule ExCashfreeSDK.HTTPClient.ReqClient do
   This module is the HTTP client for Req
   """
 
-  # Replace with your base URL
-  @base_url Application.compile_env(
-              :ex_cashfree_sdk,
-              :base_url,
-              "https://sandbox.cashfree.com"
-            )
+  @default_url "https://sandbox.cashfree.com"
 
   def get(path, headers \\ [], params \\ %{}) do
     request(:get, path, headers, params)
@@ -31,10 +26,10 @@ defmodule ExCashfreeSDK.HTTPClient.ReqClient do
   end
 
   defp request(method, path, headers, payload) do
-    url = Path.join(@base_url, path)
+    url = Path.join(get_param(:base_url, @default_url), path)
 
-    client_id = System.get_env("CLIENT_ID", "")
-    client_secret = System.get_env("CLIENT_SECRET", "")
+    client_id = get_param(:client_id, System.get_env("CASHFREE_CLIENT_ID", ""))
+    client_secret = get_param(:client_secret, System.get_env("CASHFREE_CLIENT_SECRET", ""))
 
     default_headers = [
       {:content_type, "application/json"},
@@ -65,4 +60,6 @@ defmodule ExCashfreeSDK.HTTPClient.ReqClient do
       _ -> {:error, "Request failed with status #{status}: #{inspect(body)}"}
     end
   end
+
+  def get_param(key, default \\ nil), do: Application.get_env(:ex_cashfree_sdk, key, default)
 end
