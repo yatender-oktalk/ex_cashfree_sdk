@@ -28,7 +28,6 @@ defmodule ExCashfreeSDK.PaymentGateway.Orders do
 
       # Terminate an order
       {:ok, terminated_order} = Orders.terminate_order("xx-yy-zz-12345")
-
   """
 
   alias ExCashfreeSDK.HTTPClient.ReqClient
@@ -47,7 +46,6 @@ defmodule ExCashfreeSDK.PaymentGateway.Orders do
     * `:customer_bank_account_number` - Customer's bank account number
     * `:customer_bank_ifsc` - Customer's bank IFSC code
     * `:customer_bank_code` - Customer's bank code
-
   """
   @type customer :: %{
           optional(:customer_name) => String.t(),
@@ -69,7 +67,6 @@ defmodule ExCashfreeSDK.PaymentGateway.Orders do
     * `:order_amount` - Amount of the order
     * `:order_currency` - Currency of the order (e.g., "INR")
     * `:order_meta` - Additional metadata for the order
-
   """
   @type order :: %{
           customer_details: customer(),
@@ -108,7 +105,6 @@ defmodule ExCashfreeSDK.PaymentGateway.Orders do
       }
 
       {:ok, created_order} = ExCashfreeSDK.PaymentGateway.Orders.create_order(order_data)
-
   """
   @spec create_order(order()) :: {:ok, any()} | {:error, any()}
   def create_order(order) do
@@ -130,7 +126,6 @@ defmodule ExCashfreeSDK.PaymentGateway.Orders do
   ## Example
 
       {:ok, order} = ExCashfreeSDK.PaymentGateway.Orders.get_order("xx-yy-zz-12345")
-
   """
   @spec get_order(String.t()) :: {:ok, any()} | {:error, any()}
   def get_order(order_id) do
@@ -152,7 +147,6 @@ defmodule ExCashfreeSDK.PaymentGateway.Orders do
   ## Example
 
       {:ok, terminated_order} = ExCashfreeSDK.PaymentGateway.Orders.terminate_order("xx-yy-zz-12345")
-
   """
   @spec terminate_order(String.t()) :: {:ok, any()} | {:error, any()}
   def terminate_order(order_id) do

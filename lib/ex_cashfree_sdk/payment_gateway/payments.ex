@@ -2,6 +2,7 @@ defmodule ExCashfreeSDK.PaymentGateway.Payments do
   @moduledoc """
   Payments APIs implementation for Cashfree SDK
   """
+
   alias ExCashfreeSDK.HTTPClient.ReqClient
 
   @type otp_action :: :SUBMIT_OTP | :RESEND_OTP
@@ -30,10 +31,11 @@ defmodule ExCashfreeSDK.PaymentGateway.Payments do
   If you accept OTP on your own page, you can use the below API to send OTP to Cashfree.
 
   ## Examples
-  iex> ExCashfreeSDK.PaymentGateway.submit_or_resend_otp("cf_payment_id", :submit, "123456")
-  {:ok, %{}}
+
+      iex> ExCashfreeSDK.PaymentGateway.submit_or_resend_otp("cf_payment_id", :SUBMIT_OTP, "123456")
+      {:ok, %{}}
   """
-  @spec submit_or_resend_otp(String.t(), otp_action()) ::
+  @spec submit_or_resend_otp(String.t(), otp_action(), String.t()) ::
           {:ok, any()} | {:error, any()}
   def submit_or_resend_otp(cf_payment_id, action, otp \\ "") do
     ReqClient.post("/pg/orders/pay/authenticate/#{cf_payment_id}", %{
