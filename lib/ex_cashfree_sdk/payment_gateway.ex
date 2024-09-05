@@ -138,7 +138,7 @@ defmodule ExCashfreeSDK.PaymentGateway do
         "payment_method" => "upi"
       }}
   """
-  def order_pay(order_id, payment_method, payment_session_id) do
-    Payments.order_pay(order_id, payment_method, payment_session_id)
+  def order_pay(payment_session_id, payment_method, offer_id \\ "") do
+    Payments.order_pay(payment_session_id, payment_method, offer_id)
   end
 end
