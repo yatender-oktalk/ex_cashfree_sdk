@@ -101,7 +101,11 @@ defmodule ExCashfreeSDK.PaymentGateway.Orders do
         },
         order_id: "xx-yy-zz-12345",
         order_amount: 111,
-        order_currency: "INR"
+        order_currency: "INR",
+        order_meta: %{
+          return_url: "https://example.com/return",
+          notify_url: "https://example.com/notify"
+        }
       }
 
       {:ok, created_order} = ExCashfreeSDK.PaymentGateway.Orders.create_order(order_data)

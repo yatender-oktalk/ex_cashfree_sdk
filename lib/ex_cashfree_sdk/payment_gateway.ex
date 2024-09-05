@@ -4,6 +4,7 @@ defmodule ExCashfreeSDK.PaymentGateway do
   """
 
   alias ExCashfreeSDK.PaymentGateway.Orders
+  alias ExCashfreeSDK.PaymentGateway.Payments
 
   @doc """
   Create order
@@ -108,5 +109,36 @@ defmodule ExCashfreeSDK.PaymentGateway do
   """
   def terminate_order(order_id) do
     Orders.terminate_order(order_id)
+  end
+
+  @doc """
+  Order pay
+
+  ## Examples
+
+      iex> ExCashfreeSDK.order_pay("2183323902", "upi", "session_xyx")
+      {:ok, %{
+        "action" => "custom",
+        "cf_payment_id" => "5114911130273",
+        "channel" => "link",
+        "data" => %{
+          "url" => nil,
+          "payload" => %{
+            "bhim" => "https://payments-test.cashfree.com/pgbillpayuiapi/simulator/5114911130273?txnId=5114911130273&amount=1.00&pa=cashfree@testbank&pn=Cashfree&tr=5114911130273&am=1.00&cu=INR&mode=00&purpose=00&mc=5732&tn=Cashfree%20Simulator%20Payment",
+            "default" => "https://payments-test.cashfree.com/pgbillpayuiapi/simulator/5114911130273?txnId=5114911130273&amount=1.00&pa=cashfree@testbank&pn=Cashfree&tr=5114911130273&am=1.00&cu=INR&mode=00&purpose=00&mc=5732&tn=Cashfree%20Simulator%20Payment",
+            "gpay" => "https://payments-test.cashfree.com/pgbillpayuiapi/simulator/5114911130273?txnId=5114911130273&amount=1.00&pa=cashfree@testbank&pn=Cashfree&tr=5114911130273&am=1.00&cu=INR&mode=00&purpose=00&mc=5732&tn=Cashfree%20Simulator%20Payment",
+            "paytm" => "https://payments-test.cashfree.com/pgbillpayuiapi/simulator/5114911130273?txnId=5114911130273&amount=1.00&pa=cashfree@testbank&pn=Cashfree&tr=5114911130273&am=1.00&cu=INR&mode=00&purpose=00&mc=5732&tn=Cashfree%20Simulator%20Payment",
+            "phonepe" => "https://payments-test.cashfree.com/pgbillpayuiapi/simulator/5114911130273?txnId=5114911130273&amount=1.00&pa=cashfree@testbank&pn=Cashfree&tr=5114911130273&am=1.00&cu=INR&mode=00&purpose=00&mc=5732&tn=Cashfree%20Simulator%20Payment",
+            "web" => "https://sandbox.cashfree.com/pg/view/upi/4krk7c0l1.session_UY10UB1AAt1t9kv_7_3hyL7Fl0z0D0f3TH9yIuu29A2aNmCFr6zzOUF5DrVTYzomL3UqbmnmkrBQVHEE_pzK0JVJcmJNci29JdDI2rsk9mDy.39d601b7-ec26-486f-a663-87a7186cf6e7"
+          },
+          "content_type" => nil,
+          "method" => nil
+        },
+        "payment_amount" => 1,
+        "payment_method" => "upi"
+      }}
+  """
+  def order_pay(order_id, payment_method, payment_session_id) do
+    Payments.order_pay(order_id, payment_method, payment_session_id)
   end
 end
